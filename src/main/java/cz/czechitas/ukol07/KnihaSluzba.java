@@ -20,8 +20,47 @@ public class KnihaSluzba {
 
  }
 
- public void vypisSeznamVsechKnih(){
+ public void spocitejKnihy(){
+     int pocetKnih = knihy.size();
+     System.out.println("Počet knih: " + pocetKnih);
 
  }
+
+ public void vypisSeznamVsechKnih(){
+     System.out.println("Seznam všech knih: ");
+   for(Kniha kniha : knihy){
+       System.out.print("- " + kniha.getNazev());
+       System.out.print(", autor: " + kniha.getAutor());
+       System.out.println(", rok vydání: " + kniha.getRokVydani());
+   }
+ }
+
+ public void knihyOdZadanehoAutora(String autor){
+     boolean nalezeno = false;
+     System.out.println("Knihy od autora: " + autor);
+for(Kniha kniha : knihy){
+    if(kniha.getAutor().equalsIgnoreCase(autor)){
+        System.out.println(kniha.getNazev() + ", rok: " + kniha.getRokVydani());
+        nalezeno = true;
+    }
+}
+     if (!nalezeno) {
+         System.err.println("Nebyla nalezena žádná kniha od zadaného autora.");
+     }
+ }
+
+    public void knihyVZadanemRoce(int rokVydani){
+        boolean nalezeno = false;
+        System.out.println("Knihy z roku " + rokVydani + ":");
+        for(Kniha kniha : knihy){
+            if(kniha.getRokVydani() == rokVydani){
+                System.out.println(kniha.getAutor() +" : " + kniha.getNazev());
+                nalezeno = true;
+            }
+        }
+        if (!nalezeno) {
+            System.err.println("Nebyla nalezena žádná kniha v zadaném roce.");
+        }
+    }
 
 }

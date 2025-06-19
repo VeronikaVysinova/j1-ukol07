@@ -10,7 +10,12 @@ public class Aplikace{
 
         KnihaSluzba knihaSluzba = new KnihaSluzba();
 
+        knihaSluzba.spocitejKnihy();
+
        knihaSluzba.vypisSeznamVsechKnih();
+       knihaSluzba.knihyOdZadanehoAutora("Karel Čapek");
+       knihaSluzba.knihyVZadanemRoce(1845);
+
     }
 
 

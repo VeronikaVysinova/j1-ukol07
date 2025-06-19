@@ -2,6 +2,9 @@ package cz.czechitas.ukol07;
 
 public class Kniha {
     String autor;
+    String nazev;
+    int rokVydani;
+
 
     public String getAutor() {
         return autor;
@@ -27,7 +30,5 @@ public class Kniha {
         this.rokVydani = rokVydani;
     }
 
-    String nazev;
-    int rokVydani;
 
 }
