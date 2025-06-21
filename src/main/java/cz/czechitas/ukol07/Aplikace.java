@@ -1,6 +1,7 @@
 package cz.czechitas.ukol07;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 /**
  * Spouštěcí třída aplikace
@@ -8,7 +9,7 @@ import java.io.IOException;
 public class Aplikace{
     public static void main(String[] args)throws IOException {
 
-        KnihaSluzba knihaSluzba = new KnihaSluzba();
+        KnihaSluzba knihaSluzba = new KnihaSluzba(); // instance tridy
 
         knihaSluzba.spocitejKnihy();
 
@@ -18,22 +19,7 @@ public class Aplikace{
 
     }
 
-
-
-//TODO
-        //vytvorit metodu main, v teto metode vytvorit instanci tridy KnihaSluzba
-
-        //vypise celkovy pocet knih v databazi
+}
 
 
 
-
- // knihaSluzba.knihyOdAutora("Josef Čapek");
-
-        //vypsat do konzole nazvy vsech knizek, ktere napsal Karel Capek
-        //vypsat vsechny knihy vydane poprve v roce 1845. Vypis bude ve tvaru jmeno autora: nazev knihy
-    }
-
-
-
-// BONUS dodelat viz.zadani ukolu

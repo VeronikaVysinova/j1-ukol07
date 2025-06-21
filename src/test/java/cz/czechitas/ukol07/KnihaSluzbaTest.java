@@ -22,14 +22,22 @@ class KnihaSluzbaTest {
     @Test
     void knihyOdZadanehoAutora() throws IOException {
         KnihaSluzba knihaSluzba = new KnihaSluzba();
+        List<Kniha> vysledek = knihaSluzba.knihyOdZadanehoAutora("Karel Čapek");
 
-
+        assertEquals(5, vysledek.size());
+        assertNotEquals(0,vysledek.size());
+        assertFalse(vysledek.size() == 0,"Seznam by mel byt prazdny.");
+        assertFalse(vysledek.size()>5,"Seznam nemuze obsahovat vice nez 5 knih.");
     }
 
     @Test
     void knihyVZadanemRoce() throws IOException {
         KnihaSluzba knihaSluzba = new KnihaSluzba();
+        List<Kniha> vysledek = knihaSluzba.knihyVZadanemRoce(1845);
 
+        assertEquals(2, vysledek.size());
+        assertFalse(vysledek.size() == 0,"Seznam by mel byt prazdny.");
+        assertFalse(vysledek.size() > 2,"Seznam nemuze obsahovat vice nez 2 knihy.");
 
     }
 }

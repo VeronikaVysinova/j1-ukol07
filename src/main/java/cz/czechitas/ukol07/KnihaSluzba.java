@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-public class KnihaSluzba {
+public class KnihaSluzba {               //konstruktor
  private final List<Kniha> knihy;
 
  public KnihaSluzba() throws IOException {
@@ -20,47 +21,57 @@ public class KnihaSluzba {
 
  }
 
- public void spocitejKnihy(){
-     int pocetKnih = knihy.size();
-     System.out.println("Počet knih: " + pocetKnih);
-
+ //pocet vsech knih v seznamu
+ public int spocitejKnihy(){
+   int pocetKnih = knihy.size();
+   System.out.println("Počet knih v seznamu: " + pocetKnih);
+   return pocetKnih;
  }
 
+ //vypise seznam vsech knih v seznamu
  public void vypisSeznamVsechKnih(){
      System.out.println("Seznam všech knih: ");
    for(Kniha kniha : knihy){
-       System.out.print("- " + kniha.getNazev());
-       System.out.print(", autor: " + kniha.getAutor());
-       System.out.println(", rok vydání: " + kniha.getRokVydani());
+       System.out.println("- " + kniha.getNazev() + ", autor: " + kniha.getAutor() + ", rok vydání: " + kniha.getRokVydani());
    }
  }
 
- public void knihyOdZadanehoAutora(String autor){
-     boolean nalezeno = false;
-     System.out.println("Knihy od autora: " + autor);
-for(Kniha kniha : knihy){
-    if(kniha.getAutor().equalsIgnoreCase(autor)){
-        System.out.println(kniha.getNazev() + ", rok: " + kniha.getRokVydani());
-        nalezeno = true;
-    }
-}
-     if (!nalezeno) {
-         System.err.println("Nebyla nalezena žádná kniha od zadaného autora.");
+
+ //vypise knihy od zadaneho autora
+ public List<Kniha> knihyOdZadanehoAutora(String autor) {
+     List<Kniha> seznamKnih = new ArrayList<>();
+     for (Kniha kniha : knihy) {
+         if (kniha.getAutor().equalsIgnoreCase(autor)) {
+             seznamKnih.add(kniha);
+         }
      }
+     if (seznamKnih.isEmpty()) {
+         System.out.println("Nebyla nalezena zadna kniha od autora: " + autor);
+     }else{
+         System.out.println("Knihy od autora " + autor + ": ");
+         for(Kniha kniha : seznamKnih){
+             System.out.println("- " + kniha.getNazev() + " (rok: " + kniha.getRokVydani() + ")");
+         }
+
+     }
+     return seznamKnih;
  }
 
-    public void knihyVZadanemRoce(int rokVydani){
-        boolean nalezeno = false;
-        System.out.println("Knihy z roku " + rokVydani + ":");
-        for(Kniha kniha : knihy){
+
+ //vypise knihy v dannem roce vydani
+    public List<Kniha> knihyVZadanemRoce(int rokVydani){
+       List<Kniha> knihyZRoku = new ArrayList<>();
+       System.out.println("Knihy z roku vydani " + rokVydani + ": ");
+
+       for(Kniha kniha : knihy){
             if(kniha.getRokVydani() == rokVydani){
-                System.out.println(kniha.getAutor() +" : " + kniha.getNazev());
-                nalezeno = true;
+                System.out.println(kniha.getAutor() + " : " + kniha.getNazev());
+                knihyZRoku.add(kniha);
             }
-        }
-        if (!nalezeno) {
+        } if (knihyZRoku.isEmpty()) {
             System.err.println("Nebyla nalezena žádná kniha v zadaném roce.");
         }
+        return knihyZRoku;
     }
 
 }
